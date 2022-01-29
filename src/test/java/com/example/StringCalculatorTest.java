@@ -31,5 +31,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("1\n2,3")).isEqualTo(6);
     }
 
+    @Test
+    void addSupportDifferentDelimiters(){
+        assertThat(StringCalculator.add("//;\n1;2")).isEqualTo(3);
+    }
+
 
 }
