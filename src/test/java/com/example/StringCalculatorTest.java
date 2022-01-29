@@ -26,5 +26,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("3,6,9")).isEqualTo(18);
     }
 
+    @Test
+    void addShouldHandleNewLineBetweenNumbers(){
+        assertThat(StringCalculator.add("1\n2,3")).isEqualTo(6);
+    }
+
 
 }
