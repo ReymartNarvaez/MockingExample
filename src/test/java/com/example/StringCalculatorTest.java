@@ -16,5 +16,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("3")).isEqualTo(3);
     }
 
+    @Test
+    void addShouldReturnSumOfTwoNumbers(){
+        assertThat(StringCalculator.add("3,6")).isEqualTo(9);
+    }
+
 
 }
