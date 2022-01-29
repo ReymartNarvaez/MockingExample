@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class StringCalculator {
 
@@ -47,10 +48,11 @@ public class StringCalculator {
     }
 
     private static String getDelimiter(String delimiter) {
-        String delimiters = delimiter;
         if (delimiter.startsWith("[")) {
-            delimiters = delimiter.substring(1, delimiter.length() - 1);
+            delimiter = delimiter.substring(1, delimiter.length() - 1);
         }
-        return Pattern.quote(delimiters);
+        return Stream.of(delimiter.split("]\\["))
+                .map(Pattern::quote)
+                .collect(Collectors.joining("|"));
     }
 }

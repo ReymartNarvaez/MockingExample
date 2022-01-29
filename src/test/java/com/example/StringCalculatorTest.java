@@ -53,4 +53,9 @@ public class StringCalculatorTest {
     void addDelimiterCanBeAnyLengths() {
         assertThat(StringCalculator.add("//[****]\n1****2****3")).isEqualTo(6);
     }
+
+    @Test
+    void addShouldAllowMultipleDelimiters(){
+        assertThat(StringCalculator.add("//[*][%]\n1*2%3")).isEqualTo(6);
+    }
 }
