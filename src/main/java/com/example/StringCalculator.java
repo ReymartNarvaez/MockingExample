@@ -2,6 +2,7 @@ package com.example;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class StringCalculator {
@@ -38,10 +39,18 @@ public class StringCalculator {
         String delimiter = ",|\n";
         if (string.startsWith("//")) {
             String[] parts = string.split("\n", 2);
-            delimiter = parts[0].substring(2);
-            string = parts[1];
-            return string.split(delimiter);
+            delimiter = getDelimiter(parts[0].substring(2));
+
+            return parts[1].split(delimiter);
         }
         return string.split(delimiter);
+    }
+
+    private static String getDelimiter(String delimiter) {
+        String delimiters = delimiter;
+        if (delimiter.startsWith("[")) {
+            delimiters = delimiter.substring(1, delimiter.length() - 1);
+        }
+        return Pattern.quote(delimiters);
     }
 }

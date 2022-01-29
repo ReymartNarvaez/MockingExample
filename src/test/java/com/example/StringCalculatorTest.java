@@ -48,4 +48,9 @@ public class StringCalculatorTest {
     void shouldNotAllowNumbersBiggerThanThousand() {
         assertThat(StringCalculator.add("2,1001")).isEqualTo(2);
     }
+
+    @Test
+    void addDelimiterCanBeAnyLengths() {
+        assertThat(StringCalculator.add("//[****]\n1****2****3")).isEqualTo(6);
+    }
 }
