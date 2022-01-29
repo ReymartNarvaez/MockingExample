@@ -11,5 +11,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("")).isEqualTo(0);
     }
 
+    @Test
+    void addShouldReturnOneNumber(){
+        assertThat(StringCalculator.add("3")).isEqualTo(3);
+    }
+
 
 }
