@@ -7,10 +7,11 @@ import java.util.stream.Collectors;
 public class StringCalculator {
 
     public static int add(String string) {
-        if (!string.isEmpty()){
+        if (!string.isEmpty()) {
             List<Integer> numbers = stringToIntList(string);
             negatives(numbers);
             return numbers.stream()
+                    .filter(number -> number < 1000)
                     .reduce(Integer::sum)
                     .orElseThrow();
         }
@@ -20,10 +21,10 @@ public class StringCalculator {
     private static void negatives(List<Integer> numbers) {
         StringBuilder stringBuilder = new StringBuilder();
         numbers.stream()
-                .filter(num->num<0)
-                .forEach(num->stringBuilder.append(num).append(" "));
-        if (!stringBuilder.toString().isEmpty()){
-            throw new RuntimeException("negatives not allowed " +stringBuilder);
+                .filter(num -> num < 0)
+                .forEach(num -> stringBuilder.append(num).append(" "));
+        if (!stringBuilder.toString().isEmpty()) {
+            throw new RuntimeException("negatives not allowed " + stringBuilder);
         }
     }
 
