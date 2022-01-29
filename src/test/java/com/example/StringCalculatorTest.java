@@ -3,6 +3,7 @@ package com.example;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class StringCalculatorTest {
 
@@ -36,5 +37,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("//;\n1;2")).isEqualTo(3);
     }
 
-
+    @Test
+    void addShouldThrowExceptionForNegativeNumber(){
+        assertThatThrownBy(() -> StringCalculator.add("2,-1,6,-3"))
+                .hasMessageContaining("negatives not allowed ")
+                .hasMessageContaining("-1 -3");
+    }
 }
