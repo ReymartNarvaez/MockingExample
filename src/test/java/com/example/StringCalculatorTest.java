@@ -21,5 +21,10 @@ public class StringCalculatorTest {
         assertThat(StringCalculator.add("3,6")).isEqualTo(9);
     }
 
+    @Test
+    void addShouldReturnSumOfUnknownAmountOfNumbers(){
+        assertThat(StringCalculator.add("3,6,9")).isEqualTo(18);
+    }
+
 
 }
