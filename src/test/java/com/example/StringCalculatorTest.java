@@ -55,7 +55,12 @@ public class StringCalculatorTest {
     }
 
     @Test
-    void addShouldAllowMultipleDelimiters(){
+    void addShouldAllowMultipleDelimiters() {
         assertThat(StringCalculator.add("//[*][%]\n1*2%3")).isEqualTo(6);
+    }
+
+    @Test
+    void addShouldAllowAnyLengthsOfMultipleDelimiters() {
+        assertThat(StringCalculator.add("//[**][££££][%]\n1**2££££3%4")).isEqualTo(10);
     }
 }
